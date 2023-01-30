@@ -3,11 +3,50 @@
     color: white;
 }
 
+
+body {
+    position: relative;
+    min-height: 150vh;
+}
+
+img.img-fluid {
+    height: 250px;
+}
+
 .footer-custom {
     text-align: center;
-    position: fixed;
+    position: absolute;
     bottom: 0;
     width: 100%;
     background-color: #dfeaff;
     padding-top: 25px;
+}
+
+.product-item {
+    margin-top: 10px;
+    margin-bottom: 75px;
+    position: relative;
+
+}
+
+.product-item h5 {
+    text-transform: uppercase;
+    font-size: 15px;
+    margin-bottom: 2px;
+
+}
+
+.product-item .product-subtitle {
+    font-size: 14px;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.product-item .product-price {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.product-container {
+    margin-bottom: 15px;
 }

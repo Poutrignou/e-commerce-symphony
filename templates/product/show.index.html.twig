@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+
+{% block title %}
+	{{product.name}}
+	- La boutique 100% écologique et 100% commerce équitable.
+{% endblock %}
+
+{% block content %}
+
+
+	<div class="row">
+
+		<div class="col-md-2"></div>
+		<div class="col-md-4">
+			<img src="/uploads/images/products/{{ product.illustration }}" alt="{{ product.name }}" class="img-fluid">
+		</div>
+		<div class="col-md-4 mx-auto">
+			<h3>
+				{{product.name}}
+			</h3>
+			<p>{{(product.price / 100)|number_format(2, ',', '.')}}€</p>
+			<p>
+				{{product.subtitle}}
+			</p>
+			<hr>
+			<p>
+				{{product.description}}
+			</p>
+			<hr>
+			<a href="" class="btn btn-primary">Ajouter au panier</a>
+		</div>
+		<div class="col-md-2"></div>
+	</div>
+</div>{% endblock %}
