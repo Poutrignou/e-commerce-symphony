@@ -25,7 +25,7 @@ class ProductController extends AbstractController
     #[Route('/nos-produits', name: 'products')]
     public function index(Request $request): Response
     {
-        $products = $this->entityManager->getRepository(Product::class)->findAll();
+
         
         /**
          * Permet de rendre le formulaire sur la page appelée dans le render.
@@ -35,11 +35,15 @@ class ProductController extends AbstractController
 
         /**
          * permet d 'ecouter la request
+         * On a besoin du repository
          */
         $form->handleRequest($request);
-        $search = $form->getData();
-        dd($search);
-        
+        if($form->isSubmitted() && $form->isValid()){
+        $products = $this->entityManager->getRepository(Product::class)->findWithSearch($search);
+        } else {
+            $products = $this->entityManager->getRepository(Product::class)->findAll();
+        }
+
 
         /**
          * Le render envvoie la vie 

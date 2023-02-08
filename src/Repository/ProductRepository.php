@@ -2,9 +2,10 @@
 
 namespace App\Repository;
 
+use App\Classe\Search;
 use App\Entity\Product;
-use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 
 /**
  * @extends ServiceEntityRepository<Product>
@@ -21,23 +22,50 @@ class ProductRepository extends ServiceEntityRepository
         parent::__construct($registry, Product::class);
     }
 
-    public function save(Product $entity, bool $flush = false): void
+    /**
+     *
+     * product en fonction de la filter request 
+     * @return Product[]
+     */
+    
+    public function findWithSearch (Search $search) 
     {
-        $this->getEntityManager()->persist($entity);
+        $query = $this
+        ->createQueryBuilder('p')
+        ->select('c', 'p')
+        ->join('p.category', 'c');
 
-        if ($flush) {
-            $this->getEntityManager()->flush();
+        if(!empty($search->categories)){
+            $query = $query
+            ->andWhere('c.id IN (:categories)')
+            ->setParameter('categories', $search->categories);
         }
+        if(!empty($search->string)){
+            $query = $query
+            ->andWhere('p.name LIKE :string')
+            //Syntaxe pour recherche partielle 
+            ->setParameter('string', "%{$search->string}%");
+        }
+        return $query->getQuery()->getResult();
     }
 
-    public function remove(Product $entity, bool $flush = false): void
-    {
-        $this->getEntityManager()->remove($entity);
+    // public function save(Product $entity, bool $flush = false): void
+    // {
+    //     $this->getEntityManager()->persist($entity);
 
-        if ($flush) {
-            $this->getEntityManager()->flush();
-        }
-    }
+    //     if ($flush) {
+    //         $this->getEntityManager()->flush();
+    //     }
+    // }
+
+    // public function remove(Product $entity, bool $flush = false): void
+    // {
+    //     $this->getEntityManager()->remove($entity);
+
+    //     if ($flush) {
+    //         $this->getEntityManager()->flush();
+    //     }
+    // }
 
 //    /**
 //     * @return Product[] Returns an array of Product objects
