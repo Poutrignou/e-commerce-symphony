@@ -46,10 +46,17 @@ class OrderDetails
         return $this;
     }
 
+
     public function getProduct(): ?string
     {
         return $this->product;
     }
+
+    public function __toString()
+    {
+        return $this->getProduct(). '*' . $this->getQuantity();
+    }
+
 
     public function setProduct(string $product): self
     {

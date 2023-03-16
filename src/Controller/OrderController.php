@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+
 use App\Classe\Cart;
 use App\Entity\Order;
 use App\Form\OrderType;
@@ -39,7 +40,7 @@ class OrderController extends AbstractController
         ]);
     }
 
-    #[Route('/commande/recapitulatif', name: 'order_recap', methods: 'POST')]
+    #[Route('/commande/recapitulatif', name: 'order_recap')]
     public function add(Cart $cart, Request $request): Response
     {
 
@@ -63,10 +64,15 @@ class OrderController extends AbstractController
             $delivery_content .= '</br>' . $delivery->getAddress();
             $delivery_content .= '</br>' . $delivery->getPostal() . ' ' . $delivery->getCity();
             $delivery_content .= '</br>' . $delivery->getCountry();
-            //enregistrer la commande.
+
+            //enregistrer la commande order();
 
             $order = new Order();
+
+            $reference = $date->format('dmy') . '-' . uniqid();
+
             $order->setUser($this->getUser());
+            $order->setReference($reference);
             $order->setCreatedAt($date);
             $order->setCarrierName($carriers->getName());
             $order->setCarrierPrice($carriers->getPrice());
@@ -76,6 +82,7 @@ class OrderController extends AbstractController
             $this->entityManager->persist($order);
 
             foreach ($cart->getFull() as $product) {
+
                 $orderDetails = new OrderDetails();
                 $orderDetails->setMyOrder($order);
                 $orderDetails->setProduct($product['product']->getName());
@@ -84,12 +91,14 @@ class OrderController extends AbstractController
                 $orderDetails->setTotal($product['product']->getPrice() * $product['quantity']);
                 $this->entityManager->persist($orderDetails);
             }
+
             $this->entityManager->flush();
 
             return $this->render('order/add.html.twig', [
                 'cart' => $cart->getFull(),
                 'carrier' => $carriers,
-                'delivery' => $delivery_content
+                'delivery' => $delivery_content,
+                'reference' => $order->getReference()
             ]);
         }
         return $this->redirectToRoute('cart');
