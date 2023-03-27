@@ -31,4 +31,17 @@
 		</div>
 		<div class="col-md-2"></div>
 	</div>
+	<hr>
+
+	<h3>
+		Nos meilleurs ventes !
+	</h3>
+	<span>Décrouvez les articles les plus vendus.</span>
+	<div class="row">
+		{% for product in products %}
+			<div class="col-md-4">
+				{% include 'product/single_product.html.twig' %}
+			</div>
+		{% endfor %}
+	</div>
 {% endblock %}

@@ -34,7 +34,7 @@ class AccountOrderController extends AbstractController
         if(!$order || $order->getUser() != $this->getUser()){
             return $this->redirectToRoute('account_order');
         }
-
+        
         return $this->render('account/order_show.html.twig',[
             'order' => $order
         ]);

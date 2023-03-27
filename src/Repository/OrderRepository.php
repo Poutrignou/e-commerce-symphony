@@ -49,7 +49,7 @@ class OrderRepository extends ServiceEntityRepository
     {
         // O est l'alias de Orders car nous sommes dans order repository.
         return $this->createQueryBuilder('o')
-        ->andWhere('o.isPaid = 1')
+        ->andWhere('o.state > 0')
         ->andWhere('o.user = :user')
         ->setParameter('user', $user)
         ->orderBy('o.id', 'DESC')

@@ -22,6 +22,8 @@
 		<thead class="thead-dark">
 			<tr>
 				<th scope="col">Produit</th>
+				<th scope="col">statut</th>
+
 				<th scope="col">Quantité</th>
 				<th scope="col">Prix unitaire</th>
 				<th scope="col">Total</th>
@@ -31,6 +33,15 @@
 			{% for product in order.orderDetails %}
 				<tr>
 					<td>{{product.product}}</td>
+					<td>
+						{% if order.state == 1 %}
+							Paiement accepté
+						{% elseif order.state == 2 %}
+							Préparation en cours
+						{% elseif order.state == 3 %}
+							Livraison en cours
+						{% endif %}
+					</td>
 					<td>*
 						{{product.quantity}}</td>
 					<td>{{ (product.price / 100 )|number_format('2', ',', '.')}}€</td>

@@ -15,6 +15,12 @@
 		</span>
 
 		<hr>
+		{% if is_granted('ROLE_ADMIN') %}
+			<a href="/admin">
+				Backoffice
+			</a>
+			<br>
+		{% endif %}
 		<a href="{{ path('account_password') }}">
 			Modifier mot de passe
 		</a>
