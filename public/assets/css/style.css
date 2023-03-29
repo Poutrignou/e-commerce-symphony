@@ -75,3 +75,20 @@ img.img-fluid {
     padding:20px;
     margin-top: 22px;
 }
+
+.img_container_presentation{
+    width: 500px;
+}
+
+.account-item{
+    background-color: #c8d6e5;
+    padding: 40px;
+}
+.account-item a {
+    text-transform: capitalize;
+    text-transform: bold;
+    font-size: 15px;
+    color : grey;
+    font-weight: bold;
+    text-decoration: none;
+}

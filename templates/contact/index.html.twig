@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nous contacter - La boutique
+{% endblock %}
+
+{% block content %}
+
+	<h2>Nous contacter</h2>
+	<p>N'hesitez pas à prendre contact avec notre équipe.</p>
+
+	{% for message in app.flashes('notice') %}
+		<div class"alert alert-info">{{ message }}
+		</div>
+	{% endfor %}
+
+	<div class="row">
+		<div class="col-md-8">
+			{{form(form)}}
+			</div>
+			<div class="col-md-4">
+				<strong>
+					La boutique francaise.
+				</strong>
+				<hr>
+				Tel : 04.67.75.38.08
+				<br>
+				Adresse :<br>
+				75 rue des Lilas fleuris
+				<br>
+				75 000 Paris
+				<br>
+				Email : laboutique@gmail.com
+			</div>
+		</div>
+
+
+	{% endblock %}

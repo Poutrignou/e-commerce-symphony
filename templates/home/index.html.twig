@@ -13,30 +13,30 @@
 			</div>
 		{% endfor %}
 	</div>
-	{# <div class="row featurette">
-				<div class="col-md-7">
-					<h2 class="featurette-heading">First featurette heading.
-						<span class="text-muted">It’ll blow your mind.</span>
-					</h2>
-					<p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
-				</div>
-				<div class="col-md-5">
-					<svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" preserveaspectratio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 500x500">
-						<title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text>
-					</svg>
-				</div>
-			</div>
-		
-			<hr class="featurette-divider">
-		
-			<div class="row featurette">
-				<div class="col-md-7 order-md-2">
-					<h2 class="featurette-heading">Oh yeah, it’s that good.
-						<span class="text-muted">See for yourself.</span>
-					</h2>
-					<p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
-				</div>
-				<div class="col-md-5 order-md-1">.
-					<img src="{{assets('public\assets\img\first.jpg')}}" alt="#">
-				</div> #}
-{% endblock %}
+	<hr style="margin: 50px 100px 75px">
+	<div class="row featurette">
+		<div class="col-md-7">
+			<h2 class="featurette-heading">
+				<span class="text-muted m-5">N'hesitez pas a venir nous visiter.</span>
+			</h2>
+			<p class="lead m-5">Bienvenue dans notre boutique écologique et locale située en plein cœur de Montpellier ! Nous proposons une sélection de produits éco-responsables et respectueux de l'environnement, tous issus de producteurs locaux. Nous sommes convaincus que le commerce équitable, le zéro déchet et la consommation responsable sont des pratiques indispensables pour un avenir plus durable. Rejoignez-nous dans notre engagement pour préserver notre planète et soutenir notre communauté locale.</p>
+		</div>
+		<div class="col-md-5">
+			<img class="" src="{{ asset('/assets/img/third.jpg') }}" style="width: 750px; height:500px" alt="Une boutique ouverte toute l'année">
+		</div>
+	</div>
+
+	<hr style="margin: 50px 100px 75px">
+
+
+	<div class="row featurette">
+		<div class="col-md-7 order-md-2">
+			<h2 class="featurette-heading">
+				<span class="text-muted m-3">Nous sommes fiers de travailler avec des artisans locaux !</span>
+			</h2>
+			<p class="lead m-3">Chez nous, vous trouverez des produits artisanaux de qualité supérieure, fabriqués avec des matériaux durables et respectueux de l'environnement. Nous sommes heureux de soutenir la créativité et le talent de nos artisans locaux tout en promouvant un mode de consommation plus responsable.</p>
+		</div>
+		<div class="col-md-5 order-md-1 img_container_presentation">.
+			<img class="" src="{{ asset('/assets/img/first.jpg') }}" style="width: 750px; margin-left: 50px;" alt="Une boutique écologique et responsable">
+		</div>
+	{% endblock %}
