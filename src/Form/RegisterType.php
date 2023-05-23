@@ -53,7 +53,7 @@ class RegisterType extends AbstractType
             ->add('password', RepeatedType::class, [
                 'constraints' => [
                     new NotBlank(),
-                    new Length(['min' => 3]),
+                    new Length(['min' => 6]),
                 ],
                 'type' => PasswordType::class,
                 'invalid_message' => 'le mot de passe et la confirmation doivent etre identiques',

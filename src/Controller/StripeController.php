@@ -19,13 +19,10 @@ class StripeController extends AbstractController
     public function index(EntityManagerInterface $entityManager, Cart $cart, $reference)
     {
         $product_for_stripe = [];
-        //pour afficher les images en prod on mettra le nom du domaine.
+        //Changer l'url lors de la mise en prod
         $YOUR_DOMAIN = 'http://127.0.0.1:8000';
 
         $order = $entityManager->getRepository(Order::class)->findOneByReference($reference);
-
-
-        
 
         foreach ($order->getOrderDetails()->getValues() as $product) {
             $product_object = $entityManager->getRepository(Product::class)->findOneByName($product->getProduct());
@@ -42,17 +39,7 @@ class StripeController extends AbstractController
             ];
         }
 
-        $product_for_stripe[] = [
-            'price_data' => [
-                'currency' => 'eur',
-                'unit_amount' => $order->getCarrierPrice(),
-                'product_data' => [
-                    'name' => $order->getCarriername(),
-                    'images' => [$YOUR_DOMAIN],
-                ],
-            ],
-            'quantity' => 1,
-        ];
+
 
         Stripe::setApiKey('sk_test_51Mjk7dJjCDvi38dL7CLWAMMcxj46HUurAx7HNmhfP1qzlWFPZSvnfJwCLwiLwS8Ie0Bz0gXGL36XGAMQp591yvTG00MbXpNF5c');
 

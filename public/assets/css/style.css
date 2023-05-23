@@ -1,4 +1,6 @@
-
+html {
+    overflow-y: hidden;
+}
 
 .navbar-item-custom,
 .navbar-item-custom a {
@@ -17,7 +19,7 @@ img.img-fluid {
     width: 100%;
     background-color: #bbc0cb;
     padding-top: 25px;
-    margin-top:50px;
+    margin-top: 50px;
     bottom: 0px;
 }
 
@@ -50,45 +52,47 @@ img.img-fluid {
     margin-bottom: 15px;
 }
 
-.cart-icon{
+.cart-icon {
     height: 20px;
     padding-left: 20px;
 }
 
 .block-small {
-    max-width:600px;
+    max-width: 600px;
     margin: 0 auto;
 }
 
 
 .form-check {
     background-color: #f4f8ff;
-    padding : 20px 65px;
+    padding: 20px 65px;
     margin-top: 7px;
 }
-.col-form-label{
+
+.col-form-label {
     font-weight: bold;
 }
 
-.order-summary{
+.order-summary {
     background-color: #f4f8ff;
-    padding:20px;
+    padding: 20px;
     margin-top: 22px;
 }
 
-.img_container_presentation{
+.img_container_presentation {
     width: 500px;
 }
 
-.account-item{
+.account-item {
     background-color: #c8d6e5;
     padding: 40px;
 }
+
 .account-item a {
     text-transform: capitalize;
     text-transform: bold;
     font-size: 15px;
-    color : grey;
+    color: grey;
     font-weight: bold;
     text-decoration: none;
 }

@@ -9,6 +9,9 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
+use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Validator\Mapping\ClassMetadata;
+
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[ORM\Table(name: '`user`')]
 class User implements UserInterface, PasswordAuthenticatedUserInterface
@@ -17,6 +20,13 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\GeneratedValue]
     #[ORM\Column]
     private ?int $id = null;
+
+    public static function loadValidatorMetadata(ClassMetadata $metadata)
+    {
+        $metadata->addPropertyConstraint('firstname', new NotBlank());
+        $metadata->addPropertyConstraint('email', new NotBlank());
+        $metadata->addPropertyConstraint('password', new NotBlank());
+    }
 
     #[ORM\Column(length: 180, unique: true)]
     private ?string $email = null;
@@ -32,6 +42,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\Column(length: 255)]
     private ?string $firstname = null;
+    
 
     #[ORM\Column(length: 255)]
     private ?string $lastname = null;

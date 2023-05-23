@@ -1,4 +1,42 @@
-security:
+    	{% block javascript %}
+    	<script>
+    	//j'attends que le script soit entierement load
+    	document.addEventListener('DOMContentLoaded', function() {
+
+    		//selection de l'element HTML qui contient la quantité de product dans le cart
+    		const number = document.querySelector('.number-cart');
+    		//Selection du btn add-cart pour ajouter produit
+    		const button = document.querySelector('.add-cart')
+
+    		//ajout de l evenement click sur btn
+    		button.addEventListener('click', function(){
+    		//recuperation de l id du boutton
+    		const productId = button.dataset.productId;
+    		//requete http avec id dans le corp de la requete
+    		fetch('/cart/add', {
+    			method : 'POST',
+    			headers : {
+    				'content-Type' : 'application/json'
+    			},
+    			body: JSON.stringify({
+    				productId, productId
+    			})
+    		})
+    		//convertion de l objet recu en JSON
+    		then(response => response.json())
+    			//on met a jour l'affichage du nombre de produits dans le panier
+    		.then(data => {
+    				number.innerHTML = data;
+    			});
+    		});
+    	});
+    	</script>
+    	{% endblock  %}
+
+
+    	-------------------------------------------------------------------TEST---------------------------------------------------------------------------
+
+		security:
   # https://symfony.com/doc/current/security.html#registering-the-user-hashing-passwords
   password_hashers:
     Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface: "auto"
@@ -51,4 +89,3 @@ when@test:
         cost: 4 # Lowest possible value for bcrypt
         time_cost: 3 # Lowest possible value for argon
         memory_cost: 10 # Lowest possible value for argon
-

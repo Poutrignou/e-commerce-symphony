@@ -1,5 +1,6 @@
 <!doctype html>
-<html lang="fr">
+<html lang="fr"></html>
+<html>
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -148,5 +149,32 @@
 			<script src="{{asset('assets/js/bootstrap.bundle.js')}}"></script>
 		</body>
 		{% block script %}{% endblock  %}
+
+
+		{# {% block javascript %}
+						<script>
+							document.addEventListener('DOMContentLoaded', function () {
+						const number = document.querySelector('.number-cart');
+						const button = document.querySelector('.add-cart');
+						button.addEventListener('click', function () {
+						const productId = button.dataset.productId;
+						
+						fetch('/cart/add', {
+						method: 'POST',
+						headers: {
+						'content-Type': 'application/json'
+						},
+						body: JSON.stringify(
+						{productId, productId}
+						)
+						})
+						then(response => response.json()).then(data => {
+						number.innerHTML = data;
+						});
+						});
+						});
+						</script>{% endblock  %} #}
+
+
 	</html>
 </body></html>

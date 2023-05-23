@@ -21,15 +21,14 @@ class RegisterController extends AbstractController
     }
 
     #[Route('/inscription', name: 'app_register')]
-    //1 objet Request; l objet Request doit etre mis dans $request
+
     function index(Request $request, UserPasswordHasherInterface $passwordHasher): Response
     {
         $user = new User();
         $form = $this->createForm(RegisterType::class, $user);
 
-        //form peut ecouter la requete.
         $form->handleRequest($request);
-        //si le form est submit et est valid :
+
         if ($form->isSubmitted() && $form->isValid()) {
             $password = password_hash($user->getPassword(), PASSWORD_DEFAULT);
 
