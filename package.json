@@ -1,0 +1,8 @@
+{
+  "name": "laboutique",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/Poutrignou/e-commerce-symphony.git",
+  "author": "Poutrignou <thibaut.boguszewski@gmail.com>",
+  "license": "MIT"
+}
